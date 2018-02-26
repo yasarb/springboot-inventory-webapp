@@ -4,7 +4,7 @@ Simple inventory tracking web application built with Spring Boot.
 
 Reference: [Spring Boot ile Örnek Web Uygulaması](https://medium.com/kodgemisi/spring-boot-ile-%C3%B6rnek-web-uygulamas%C4%B1-914c94c9099f) by [Sedat Gökcen](http://www.sedooe.com/)
 
-##Features
+## Features
 - [x] User Registration
 - [x] User Login & Logout
 - [x] Adding & deleting items 
