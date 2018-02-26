@@ -10,6 +10,10 @@ addons:
     packages:
       - oracle-java8-installer
 
+cache:
+  directories:
+  - $HOME/.m2
+
 notifications:
   email:
     on_success: never # default: change
