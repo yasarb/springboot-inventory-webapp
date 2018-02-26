@@ -2,6 +2,7 @@ package com.ysrbdlgn.spring.webapp.controller;
 
 import com.ysrbdlgn.spring.webapp.domain.ItemAddForm;
 import com.ysrbdlgn.spring.webapp.service.ItemService;
+import com.ysrbdlgn.spring.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,12 +17,12 @@ import javax.validation.Valid;
 @Controller
 public class ItemController {
     private ItemService itemService;
-    //private UserService userService;
+    private UserService userService;
 
     @Autowired
-    public ItemController(ItemService itemService){//, UserService userService) {
+    public ItemController(ItemService itemService, UserService userService) {
         this.itemService = itemService;
-        //this.userService = userService;
+        this.userService = userService;
     }
 
     @RequestMapping("/items")

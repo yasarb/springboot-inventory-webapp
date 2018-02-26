@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
-    //private final UserService userService;
+    private final UserService userService;
 
     @Autowired
-    public ItemServiceImpl(ItemRepository itemRepository){//}, UserService userService) {
+    public ItemServiceImpl(ItemRepository itemRepository, UserService userService) {
         this.itemRepository = itemRepository;
-        //this.userService = userService;
+        this.userService = userService;
     }
 
     @Override
@@ -24,7 +24,6 @@ public class ItemServiceImpl implements ItemService {
             String inventoryCode = Long.toHexString(Double.doubleToLongBits(Math.random())).substring(6);
             Item item = new Item(inventoryCode, form.getItemType());
             itemRepository.save(item);
-            System.out.println(itemRepository.findOne(item.getId()));
         }
     }
 

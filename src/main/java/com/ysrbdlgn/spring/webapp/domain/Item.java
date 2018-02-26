@@ -16,6 +16,10 @@ public class Item {
     @Column(name = "type", nullable = false)
     private String type;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Item() {
     }
 
@@ -46,6 +50,14 @@ public class Item {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
