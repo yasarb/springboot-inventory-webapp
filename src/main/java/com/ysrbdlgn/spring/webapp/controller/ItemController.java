@@ -1,6 +1,8 @@
 package com.ysrbdlgn.spring.webapp.controller;
 
 import com.ysrbdlgn.spring.webapp.domain.ItemAddForm;
+import com.ysrbdlgn.spring.webapp.domain.ItemAssignForm;
+import com.ysrbdlgn.spring.webapp.domain.User;
 import com.ysrbdlgn.spring.webapp.service.ItemService;
 import com.ysrbdlgn.spring.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class ItemController {
@@ -27,7 +31,12 @@ public class ItemController {
 
     @RequestMapping("/items")
     public ModelAndView getItemsPage() {
-        return new ModelAndView("items", "items", itemService.getItems());
+        Map<String, Object> model = new HashMap<>();
+        model.put("items", itemService.getItems());
+        model.put("usernames", userService.getUsernames());
+        model.put("assignForm", new ItemAssignForm());
+
+        return new ModelAndView("items", model);
     }
 
     @RequestMapping(value = "/items/{id}", method = RequestMethod.DELETE)
@@ -48,6 +57,12 @@ public class ItemController {
             return "addItem";
 
         itemService.addItem(form);
+        return "redirect:/items";
+    }
+
+    @RequestMapping(value = "/items/{id}", method = RequestMethod.PUT)
+    public String handleAssignItem(@ModelAttribute("user") ItemAssignForm form, @PathVariable("id") Long id) {
+        itemService.assignItem(form.getUsername(), id);
         return "redirect:/items";
     }
 }
