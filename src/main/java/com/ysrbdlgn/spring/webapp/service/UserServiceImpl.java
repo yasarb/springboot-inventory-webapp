@@ -5,6 +5,8 @@ import com.ysrbdlgn.spring.webapp.domain.User;
 import com.ysrbdlgn.spring.webapp.domain.UserAddForm;
 import com.ysrbdlgn.spring.webapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.jws.soap.SOAPBinding;
@@ -73,5 +75,16 @@ public class UserServiceImpl implements UserService {
         }
 
         return map;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = getUserByUsername(username);
+
+        if (null == user) {
+            throw new UsernameNotFoundException("User with username: " + username + " not found.");
+        } else {
+            return user;
+        }
     }
 }
