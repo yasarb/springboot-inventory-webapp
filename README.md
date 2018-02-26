@@ -1,4 +1,4 @@
-# springboot-sample-webapp [![Build Status](https://travis-ci.com/ysrbdlgn/springboot-sample-webapp.svg?token=Ngs4TKaRceA2Dt5tw6fj&branch=master)](https://travis-ci.com/ysrbdlgn/springboot-sample-webapp)
+# springboot-inventory-webapp [![Build Status](https://travis-ci.com/ysrbdlgn/springboot-sample-webapp.svg?token=Ngs4TKaRceA2Dt5tw6fj&branch=master)](https://travis-ci.com/ysrbdlgn/springboot-sample-webapp)
 
 Simple inventory tracking web application built with Spring Boot.
 
